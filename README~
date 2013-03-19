@@ -171,7 +171,7 @@ This is a from scratch build from the Devise, RSpec, Cucumber tutorial:
   websocket (1.0.7, 1.0.6)
   xpath (1.0.0)
 
-Commit: Working through TDD section
+Commit:
 
   dev01@dev01:~/dev/test2$ rails generate rspec:install
         create  .rspec
