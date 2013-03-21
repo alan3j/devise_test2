@@ -200,4 +200,19 @@ Commit: Continued work through TDD section
 
   Run Cucumber
 
-  
+Commit: Completed Layout and Stylesheets
+
+  Configuration
+
+    Configuration File
+
+  Layout and Stylesheets
+
+    Navigation Links for Devise (Haml)
+
+    Flash Messages (Haml)
+
+    CSS Styling with SASS
+
+    Simple Default Application Layout (Haml)
+
