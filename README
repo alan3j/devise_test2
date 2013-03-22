@@ -297,3 +297,15 @@ Commit: Authentication section
 
       Prevent Logging of Passwords
 
+Commit: User Management
+
+  (Skipped) Authorization (CanCan)
+
+  User Management
+
+    Add a migration
+
+    Modify the User Model
+
+    Create Custom Views for User Registration
+
