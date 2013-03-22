@@ -216,3 +216,84 @@ Commit: Completed Layout and Stylesheets
 
     Simple Default Application Layout (Haml)
 
+Commit: Authentication section
+
+  Authentication
+
+    Setup Configuration for Devise
+
+      dev01@dev01:~/dev/test2$ rails generate devise:install
+            create  config/initializers/devise.rb
+            create  config/locales/devise.en.yml
+      ===============================================================================
+
+      Some setup you must do manually if you haven't yet:
+
+        1. Ensure you have defined default url options in your environments files. Here 
+           is an example of default_url_options appropriate for a development environment 
+           in config/environments/development.rb:
+
+             config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+           In production, :host should be set to the actual host of your application.
+
+        2. Ensure you have defined root_url to *something* in your config/routes.rb.
+           For example:
+
+             root :to => "home#index"
+
+        3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+           For example:
+
+             <p class="notice"><%= notice %></p>
+             <p class="alert"><%= alert %></p>
+
+        4. If you are deploying Rails 3.1+ on Heroku, you may want to set:
+
+             config.assets.initialize_on_precompile = false
+
+           On config/application.rb forcing your application to not access the DB
+           or load models when precompiling your assets.
+
+        5. You can copy Devise views (for customization) to your app by running:
+
+             rails g devise:views
+
+      ===============================================================================
+
+    Generate a Model and Routes for Users
+
+      dev01@dev01:~/dev/test2$ rails generate devise User
+            invoke  active_record
+            create    db/migrate/20130322002837_devise_create_users.rb
+            create    app/models/user.rb
+            invoke    rspec
+          conflict      spec/models/user_spec.rb
+          Overwrite /home/dev01/dev/test2/spec/models/user_spec.rb? (enter "h" for help) [Ynaqdh] n
+              skip      spec/models/user_spec.rb
+            invoke      factory_girl
+          conflict        spec/factories/users.rb
+            Overwrite /home/dev01/dev/test2/spec/factories/users.rb? (enter "h" for help) [Ynaqdh] n
+              skip        spec/factories/users.rb
+            insert    app/models/user.rb
+             route  devise_for :users
+
+      dev01@dev01:~/dev/test2$ rake routes
+              new_user_session GET    /users/sign_in(.:format)       devise/sessions#new
+                  user_session POST   /users/sign_in(.:format)       devise/sessions#create
+          destroy_user_session DELETE /users/sign_out(.:format)      devise/sessions#destroy
+                 user_password POST   /users/password(.:format)      devise/passwords#create
+             new_user_password GET    /users/password/new(.:format)  devise/passwords#new
+            edit_user_password GET    /users/password/edit(.:format) devise/passwords#edit
+                               PUT    /users/password(.:format)      devise/passwords#update
+      cancel_user_registration GET    /users/cancel(.:format)        devise/registrations#cancel
+             user_registration POST   /users(.:format)               devise/registrations#create
+         new_user_registration GET    /users/sign_up(.:format)       devise/registrations#new
+        edit_user_registration GET    /users/edit(.:format)          devise/registrations#edit
+                               PUT    /users(.:format)               devise/registrations#update
+                               DELETE /users(.:format)               devise/registrations#destroy
+
+      Accommodate Cucumber Testing for “Sign Out”
+
+      Prevent Logging of Passwords
+
