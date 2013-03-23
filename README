@@ -309,3 +309,20 @@ Commit: User Management
 
     Create Custom Views for User Registration
 
+Commit: Home Page, Initial Data
+
+  dev01@dev01:~/dev/test2$ mv public/index.html public/index.html.original
+
+  dev01@dev01:~/dev/test2$ rails generate controller home index --no-controller-specs --skip-stylesheets --skip-javascripts
+        create  app/controllers/home_controller.rb
+         route  get "home/index"
+        invoke  erb
+        create    app/views/home
+        create    app/views/home/index.html.erb
+        invoke  rspec
+        invoke  assets
+        invoke    coffee
+        invoke    scss
+
+  Add haml gem to Gemfile
+
