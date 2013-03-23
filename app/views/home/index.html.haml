@@ -3,4 +3,5 @@
 
 %h3 User List
 - @users.each do |user|
-  = "User: #{user.name}"
+  %p
+    User: #{link_to user.name, user}

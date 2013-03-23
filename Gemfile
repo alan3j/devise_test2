@@ -32,6 +32,7 @@ gem "figaro", ">= 0.5.3"
 group :development, :test do
   gem "rspec-rails", ">= 2.12.2"
   gem "factory_girl_rails", ">= 4.2.0"
+  gem "debugger"
 end
 
 group :development do
