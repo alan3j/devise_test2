@@ -327,3 +327,6 @@ Commit: Home Page, Initial Data
   Add haml gem to Gemfile
 
 Commit: User Profiles
+
+Commit: Restrict Access
+

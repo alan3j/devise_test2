@@ -10,8 +10,8 @@ require 'rspec/autorun'
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
-  config.include(EmailSpec:Helpers)
-  config.include(EmailSpec::matchers)
+  config.include(EmailSpec::Helpers)
+  config.include(EmailSpec::Matchers)
   
   # ## Mock Framework
   #
