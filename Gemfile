@@ -10,9 +10,6 @@ gem 'haml'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-gem 'therubyracer'
-gem 'execjs'
-
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -35,6 +32,11 @@ group :development, :test do
   gem "rspec-rails", ">= 2.12.2"
   gem "factory_girl_rails", ">= 4.2.0"
   gem "debugger"
+
+  # Heroku (moved from global)
+  gem 'therubyracer'
+  gem 'execjs'
+
 end
 
 group :development do
