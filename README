@@ -355,3 +355,9 @@ Commit: Heroku #1 through #5
 
   heroku run rake db:reset
 
+Commit: Exploring Devise #1
+
+  Change or test user password (irb)
+    User.find(1).reset_password! 'password', 'password'
+    User.find(1).valid_password? 'password'
+

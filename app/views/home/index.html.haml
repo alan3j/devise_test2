@@ -1,7 +1,10 @@
-%h1 home#index
-%p Find ME in app/views/home/index.html.haml 
+%h3 home#index
+%p (app/views/home/index.html.haml) 
 
-%h3 User List
-- @users.each do |user|
-  %p
-    User: #{link_to user.name, user}
+%h4 TEST LINKS
+= link_to "Users", users_path
+
+-#-- %h3 User List
+-#-- - @users.each do |user|
+-#--   %p
+-#--     User: #{link_to user.name, user}
