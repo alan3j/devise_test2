@@ -330,3 +330,28 @@ Commit: User Profiles
 
 Commit: Restrict Access
 
+Commit: Heroku #1 through #5
+  Several iterations of troubleshooting database init and seeding.
+  Worked on Commit #4; adding notes for #5
+
+  bundle install --without production
+
+  rake assets:precompile
+
+  git push heroku master
+
+  heroku logs
+
+  heroku rake db:migrate
+
+  heroku config (configure ENV)
+    heroku config
+    heroku config:add ADMIN_NAME="Alan Tripjay"
+    heroku config:add ADMIN_EMAIL="alan.jjj@gmail.com"
+    heroku config:add ADMIN_PASSWORD="********"
+    heroku config:set ADMIN_PASSWORD="password"
+
+  heroku rake db:seed
+
+  heroku run rake db:reset
+
