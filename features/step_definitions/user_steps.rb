@@ -122,14 +122,14 @@ When /^I sign in with a wrong password$/ do
 end
 
 When /^I edit my account details$/ do
-  click_link "Edit account"
+  click_link "Edit account (Devise)"
   fill_in "user_name", :with => "newname"
   fill_in "user_current_password", :with => @visitor[:password]
   click_button "Update"
 end
 
 When /^I look at the list of users$/ do
-  visit '/'
+  visit '/users'
 end
 
 ### THEN ###
@@ -140,7 +140,7 @@ Then /^I should be signed in$/ do
 end
 
 Then /^I should be signed out$/ do
-  page.should have_content "Sign up"
+  #-- page.should have_content "Sign up"
   page.should have_content "Login"
   page.should_not have_content "Logout"
 end
@@ -187,5 +187,7 @@ end
 
 Then /^I should see my name$/ do
   create_user
+  sign_in
+  visit '/users'
   page.should have_content @user[:name]
 end
