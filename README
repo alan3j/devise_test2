@@ -430,4 +430,22 @@ Commit: db:migrate and basic controllers and templates
   2. Add controller
   3. Add template
 
-Next: PDF - prawn
+Commit: PDF - prawn
+  sudo gem install prawn
+
+  # Assignment style
+  pdf = Prawn::Document.new
+    pdf.stroke_bounds
+    pdf.stroke_circle [0,0], 10
+  pdf.render_file "prawn.pdf"
+
+  # Implicit block style
+  Prawn::Document.generate("prawn.pdf") do
+    stroke_bounds
+    stroke_circle [0,0], 10
+    bounding_box([100,300], :width => 300, :height => 200) do
+      stroke_bounds
+      stroke_circle [0,0], 10
+    end
+    text "Hello, test"
+  end

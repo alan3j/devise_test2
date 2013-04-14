@@ -5,11 +5,14 @@ gem 'rails', '3.2.12'
 
 gem 'haml'
 
-
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
+
+
+#-- PDF generation
+gem 'prawn'
 
 # Gems used only for assets and not required
 # in production environments by default.
