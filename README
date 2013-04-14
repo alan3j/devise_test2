@@ -399,4 +399,35 @@ Commit: Generate a new models for this test application
   # made backup of dev database
   ~/dev/test2_development.pgdb.2013.04.13.1.backup
 
-  
+Commit: db:migrate and basic controllers and templates
+  rake db:migrate
+
+  # observe
+  rails dbconsole
+
+  rails console
+    irb(main):049:0> @cus5 = Customer.new :name => 'Customer 5'
+    => #<Customer id: nil, name: "Customer 5", created_at: nil, updated_at: nil>
+    irb(main):050:0> @cus5.save
+       (0.4ms)  BEGIN
+      SQL (3.7ms)  INSERT INTO "customers" ("created_at", "name", "updated_at") VALUES ($1, $2,     $3) RETURNING "id"  [["created_at", Sun, 14 Apr 2013 13:23:53 UTC +00:00], ["name",     "Customer 5"], ["updated_at", Sun, 14 Apr 2013 13:23:53 UTC +00:00]]
+       (1.6ms)  COMMIT
+    => true
+    irb(main):051:0> Order
+    => Order(id: integer, order_date: datetime, customer_id: integer, created_at: datetime,     updated_at: datetime)
+    irb(main):053:0> @cus5.orders.build(:order_date => Time.now)
+    => #<Order id: nil, order_date: "2013-04-14 13:24:41", customer_id: 4, created_at: nil,     updated_at: nil>
+    irb(main):054:0> @cus5.save
+       (0.3ms)  BEGIN
+      SQL (2.6ms)  INSERT INTO "orders" ("created_at", "customer_id", "order_date", "updated_at")    VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", Sun, 14 Apr 2013 13:24:46 UTC    +00:00], ["customer_id", 4], ["order_date", Sun, 14 Apr 2013 13:24:41 UTC +00:00], [   "updated_at", Sun, 14 Apr 2013 13:24:46 UTC +00:00]]
+       (1.5ms)  COMMIT
+    => true
+    irb(main):055:0> 
+
+  # Add basic interface for customers and orders
+
+  1. Add resources :<model> to routes.rb
+  2. Add controller
+  3. Add template
+
+Next: PDF - prawn

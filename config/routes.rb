@@ -13,6 +13,9 @@ Test2::Application.routes.draw do
   #-- devise_for :users
   devise_for :users, :controllers => { :sessions => :sessions }
   resources :users
+
+  resources :customers
+  resources :orders
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

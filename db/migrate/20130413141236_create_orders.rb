@@ -3,6 +3,8 @@ class CreateOrders < ActiveRecord::Migration
     create_table :orders do |t|
       t.datetime :order_date
 
+      t.integer :customer_id
+
       t.timestamps
     end
   end

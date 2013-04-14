@@ -1,0 +1,7 @@
+%h3 Orders#index
+%p (app/views/orders/index.html.haml)
+%ul.orders
+  - @orders.each do |order|
+    %li= link_to order.order_date, order
+    = "from"
+    = link_to order.customer.name, order.customer

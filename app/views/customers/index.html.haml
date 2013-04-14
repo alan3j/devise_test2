@@ -1,0 +1,11 @@
+%h3 Customers#index
+%p (app/views/customers/index.html.haml)
+
+%ul.customer_list
+  - @customers.each do |customer|
+    %li= link_to customer.name, customer
+
+    - if customer.orders.empty? == false
+      %ul.order_list
+        - customer.orders.each do |order|
+          %li= link_to order.order_date, order
