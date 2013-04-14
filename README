@@ -390,4 +390,13 @@ Commit: Exploring Devise #2: Override sessions and views
   http://presentations.royvandewater.com/?file=authentication-with-devise.html#8
     (override the session controller)
 
-Next: Generate a new model for this test application and explore authentication
+Commit: Generate a new models for this test application
+  Using customers and orders based on RailsGuides Active Record Associations
+
+  rails generate model Customer name:string
+  rails generate model Order order_date:datetime
+
+  # made backup of dev database
+  ~/dev/test2_development.pgdb.2013.04.13.1.backup
+
+  
