@@ -12,3 +12,20 @@ puts 'user: ' << user.name
 
 user2 = User.find_or_create_by_email :name => 'Second User', :email => 'user2@example.com', :password => 'changeme', :password_confirmation => 'changeme'
 puts 'user: ' << user2.name
+
+puts 'DEFAULT CUSTOMERS'
+cust = Customer.find_or_create_by_name :name => 'Customer 1'
+  cust.orders.find_or_create_by_order_date :order_date => Time.now
+  puts 'customer: ' << cust.name
+  puts '  orders: ' << cust.orders.count.to_s
+cust = Customer.find_or_create_by_name :name => 'Customer 2'
+  cust.orders.find_or_create_by_order_date :order_date => Time.now
+  cust.orders.find_or_create_by_order_date :order_date => Time.now
+  puts 'customer: ' << cust.name
+  puts '  orders: ' << cust.orders.count.to_s
+cust = Customer.find_or_create_by_name :name => 'Customer 3'
+  cust.orders.find_or_create_by_order_date :order_date => Time.now
+  cust.orders.find_or_create_by_order_date :order_date => Time.now
+  cust.orders.find_or_create_by_order_date :order_date => Time.now
+  puts 'customer: ' << cust.name
+  puts '  orders: ' << cust.orders.count.to_s

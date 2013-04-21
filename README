@@ -433,19 +433,80 @@ Commit: db:migrate and basic controllers and templates
 Commit: PDF - prawn
   sudo gem install prawn
 
-  # Assignment style
-  pdf = Prawn::Document.new
-    pdf.stroke_bounds
-    pdf.stroke_circle [0,0], 10
-  pdf.render_file "prawn.pdf"
-
-  # Implicit block style
-  Prawn::Document.generate("prawn.pdf") do
-    stroke_bounds
-    stroke_circle [0,0], 10
-    bounding_box([100,300], :width => 300, :height => 200) do
+  # Testing in rails console
+    # Assignment style
+    pdf = Prawn::Document.new
+      pdf.stroke_bounds
+      pdf.stroke_circle [0,0], 10
+    pdf.render_file "prawn.pdf"
+  
+    # Implicit block style
+    Prawn::Document.generate("prawn.pdf") do
       stroke_bounds
       stroke_circle [0,0], 10
+      bounding_box([100,300], :width => 300, :height => 200) do
+        stroke_bounds
+        stroke_circle [0,0], 10
+      end
+      text "Hello, test"
     end
-    text "Hello, test"
-  end
+
+Commit: Fix Heroku production- migrations and seeding
+
+  Fix migrations
+    dev01@dev01:~/dev/test2$ heroku pg:info
+    === HEROKU_POSTGRESQL_BROWN_URL (DATABASE_URL)
+    Plan:        Dev
+    Status:      available
+    Connections: 1
+    PG Version:  9.2.4
+    Created:     2013-03-29 19:38 UTC
+    Data Size:   6.5 MB
+    Tables:      2
+    Rows:        4/10000 (In compliance)
+    Fork/Follow: Unsupported
+
+    heroku pg:psql
+      d1c59i50se32tm=> \d
+                         List of relations
+       Schema |       Name        |   Type   |     Owner      
+      --------+-------------------+----------+----------------
+       public | schema_migrations | table    | jyfclayiuudbeg
+       public | users             | table    | jyfclayiuudbeg
+       public | users_id_seq      | sequence | jyfclayiuudbeg
+      (3 rows)
+
+    rails dbconsole
+      test2_development=> \d
+                     List of relations
+       Schema |       Name        |   Type   | Owner 
+      --------+-------------------+----------+-------
+       public | customers         | table    | test2
+       public | customers_id_seq  | sequence | test2
+       public | orders            | table    | test2
+       public | orders_id_seq     | sequence | test2
+       public | schema_migrations | table    | test2
+       public | users             | table    | test2
+       public | users_id_seq      | sequence | test2
+      (7 rows)
+
+    heroku rake db:migrate  #-- use heroku run rake instead
+
+  Add customer and order seeds and reset databases
+
+    #-- see ./db/seeds.rb
+
+    rake db:reset
+
+
+
+
+
+
+
+
+
+Next: More Prawn
+  http://blog.idyllic-software.com/blog/bid/204082/Creating-PDF-using-Prawn-in-Ruby-on-Rails
+
+  
