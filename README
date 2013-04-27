@@ -331,6 +331,9 @@ Commit: User Profiles
 Commit: Restrict Access
 
 Commit: Heroku #1 through #5
+
+  http://stormy-tor-7806.herokuapp.com
+
   Several iterations of troubleshooting database init and seeding.
   Worked on Commit #4; adding notes for #5
 
@@ -498,15 +501,16 @@ Commit: Fix Heroku production- migrations and seeding
 
     rake db:reset
 
+    git push heroku master
+    heroku run rake db:reset
 
-
-
-
-
-
-
-
-Next: More Prawn
+Commit: More Prawn - customers and orders pdf
   http://blog.idyllic-software.com/blog/bid/204082/Creating-PDF-using-Prawn-in-Ruby-on-Rails
 
-  
+  #-- Added respond to block in ./app/controllers/customers_controller.rb
+
+  #-- Troublshooting class path for ./app/pdfs/customersandorders_pdf.rb
+  Rails.application.config
+  Test2::Application.config.autoload_paths
+  #-- ended up adding "  require 'customersandorders_pdf.rb'" to customers controller
+
