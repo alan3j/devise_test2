@@ -514,3 +514,158 @@ Commit: More Prawn - customers and orders pdf
   Test2::Application.config.autoload_paths
   #-- ended up adding "  require 'customersandorders_pdf.rb'" to customers controller
 
+Next: Royalty migrations, part 1
+
+  #-- backup database
+  ~/dev/test2_development.pgdb.2013.04.27.1.backup
+
+  #-- Models for Diagram1.dia (rename the diagram)
+  # 
+  rails generate model Artist name:string
+  
+  rails generate model Category name:string
+  
+  rails generate model Product title:text artist_id:integer category_id:integer upc:string spcn:string price:decimal media_type:string new_release:boolean key1:string key2:string key3:string rank:integer old_price:decimal new_price:decimal
+
+  rails generate model PublishingHouse type:string name:string contact_name:string phone:string fax:string address:string address2:string city:string state:string zip:string
+
+  rails generate model RoyaltyOwner publishing_house_id:integer type:string first_name:string last_name:string other_name:string phone:string fax:string address:string address2:string city:string state:string zip:string
+
+  rails generate model RoyaltyownerProductMap royalty_owner_id:integer product_id:integer royalty_percentage:decimal royalty_type:string amount:decimal incomplete_ammount:decimal notes:text
+
+    #-- Model output
+    
+          invoke  active_record
+          create    db/migrate/20130427141029_create_artists.rb
+          create    app/models/artist.rb
+          invoke    rspec
+          create      spec/models/artist_spec.rb
+          invoke      factory_girl
+          create        spec/factories/artists.rb
+    
+          invoke  active_record
+          create    db/migrate/20130427141107_create_categories.rb
+          create    app/models/category.rb
+          invoke    rspec
+          create      spec/models/category_spec.rb
+          invoke      factory_girl
+          create        spec/factories/categories.rb
+    
+          invoke  active_record
+          create    db/migrate/20130427141131_create_products.rb
+          create    app/models/product.rb
+          invoke    rspec
+          create      spec/models/product_spec.rb
+          invoke      factory_girl
+          create        spec/factories/products.rb
+    
+          invoke  active_record
+          create    db/migrate/20130427141155_create_publishing_houses.rb
+          create    app/models/publishing_house.rb
+          invoke    rspec
+          create      spec/models/publishing_house_spec.rb
+          invoke      factory_girl
+          create        spec/factories/publishing_houses.rb
+    
+          invoke  active_record
+          create    db/migrate/20130427141212_create_royalty_owners.rb
+          create    app/models/royalty_owner.rb
+          invoke    rspec
+          create      spec/models/royalty_owner_spec.rb
+          invoke      factory_girl
+          create        spec/factories/royalty_owners.rb
+    
+          invoke  active_record
+          create    db/migrate/20130427141227_create_royaltyowner_product_maps.rb
+          create    app/models/royaltyowner_product_map.rb
+          invoke    rspec
+          create      spec/models/royaltyowner_product_map_spec.rb
+          invoke      factory_girl
+          create        spec/factories/royaltyowner_product_maps.rb
+
+  #-- Add has_many and belongs_to relationships in model files
+
+
+  test2_development=> \d
+                 List of relations
+   Schema |       Name        |   Type   | Owner 
+  --------+-------------------+----------+-------
+   public | customers         | table    | test2
+   public | customers_id_seq  | sequence | test2
+   public | orders            | table    | test2
+   public | orders_id_seq     | sequence | test2
+   public | schema_migrations | table    | test2
+   public | users             | table    | test2
+   public | users_id_seq      | sequence | test2
+  (7 rows)
+  
+  
+  dev01@dev01:~/dev/test2$ rake db:migrate
+  ==  CreateArtists: migrating ==================================================
+  -- create_table(:artists)
+  NOTICE:  CREATE TABLE will create implicit sequence "artists_id_seq" for serial column "artists.id"
+  NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "artists_pkey" for table "artists"
+     -> 0.1555s
+  ==  CreateArtists: migrated (0.1556s) =========================================
+  
+  ==  CreateCategories: migrating ===============================================
+  -- create_table(:categories)
+  NOTICE:  CREATE TABLE will create implicit sequence "categories_id_seq" for serial column "categories.id"
+  NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "categories_pkey" for table "categories"
+     -> 0.0075s
+  ==  CreateCategories: migrated (0.0080s) ======================================
+  
+  ==  CreateProducts: migrating =================================================
+  -- create_table(:products)
+  NOTICE:  CREATE TABLE will create implicit sequence "products_id_seq" for serial column "products.id"
+  NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "products_pkey" for table "products"
+     -> 0.0072s
+  ==  CreateProducts: migrated (0.0074s) ========================================
+  
+  ==  CreatePublishingHouses: migrating =========================================
+  -- create_table(:publishing_houses)
+  NOTICE:  CREATE TABLE will create implicit sequence "publishing_houses_id_seq" for serial column "publishing_houses.id"
+  NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "publishing_houses_pkey" for table "publishing_houses"
+     -> 0.0165s
+  ==  CreatePublishingHouses: migrated (0.0167s) ================================
+  
+  ==  CreateRoyaltyOwners: migrating ============================================
+  -- create_table(:royalty_owners)
+  NOTICE:  CREATE TABLE will create implicit sequence "royalty_owners_id_seq" for serial column "royalty_owners.id"
+  NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "royalty_owners_pkey" for table "royalty_owners"
+     -> 0.0357s
+  ==  CreateRoyaltyOwners: migrated (0.0359s) ===================================
+  
+  ==  CreateRoyaltyownerProductMaps: migrating ==================================
+  -- create_table(:royaltyowner_product_maps)
+  NOTICE:  CREATE TABLE will create implicit sequence "royaltyowner_product_maps_id_seq" for serial column "royaltyowner_product_maps.id"
+  NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "royaltyowner_product_maps_pkey" for table "royaltyowner_product_maps"
+     -> 0.0080s
+  ==  CreateRoyaltyownerProductMaps: migrated (0.0098s) =========================
+  
+  
+  test2_development=> \d
+                        List of relations
+   Schema |               Name               |   Type   | Owner 
+  --------+----------------------------------+----------+-------
+   public | artists                          | table    | test2
+   public | artists_id_seq                   | sequence | test2
+   public | categories                       | table    | test2
+   public | categories_id_seq                | sequence | test2
+   public | customers                        | table    | test2
+   public | customers_id_seq                 | sequence | test2
+   public | orders                           | table    | test2
+   public | orders_id_seq                    | sequence | test2
+   public | products                         | table    | test2
+   public | products_id_seq                  | sequence | test2
+   public | publishing_houses                | table    | test2
+   public | publishing_houses_id_seq         | sequence | test2
+   public | royalty_owners                   | table    | test2
+   public | royalty_owners_id_seq            | sequence | test2
+   public | royaltyowner_product_maps        | table    | test2
+   public | royaltyowner_product_maps_id_seq | sequence | test2
+   public | schema_migrations                | table    | test2
+   public | users                            | table    | test2
+   public | users_id_seq                     | sequence | test2
+  (19 rows)
+
