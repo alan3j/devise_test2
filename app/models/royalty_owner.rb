@@ -4,5 +4,5 @@ class RoyaltyOwner < ActiveRecord::Base
 
   belongs_to :royaltyowner_product_map
 
-  attr_accessible :address, :address2, :city, :fax, :first_name, :last_name, :other_name, :phone, :publishing_house_id, :state, :type, :zip
+  attr_accessible :address, :address2, :city, :fax, :first_name, :last_name, :other_name, :phone, :publishing_house_id, :state, :abbreviation, :zip
 end

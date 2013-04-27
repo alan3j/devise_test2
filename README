@@ -514,7 +514,7 @@ Commit: More Prawn - customers and orders pdf
   Test2::Application.config.autoload_paths
   #-- ended up adding "  require 'customersandorders_pdf.rb'" to customers controller
 
-Next: Royalty migrations, part 1
+Commit: Royalty migrations, part 1
 
   #-- backup database
   ~/dev/test2_development.pgdb.2013.04.27.1.backup
@@ -669,3 +669,30 @@ Next: Royalty migrations, part 1
    public | users_id_seq                     | sequence | test2
   (19 rows)
 
+Commit: Correct reserved field name, type; complete seeding
+
+  #-- Migrations to rename field "type" in PublishingHouse and RoyaltyOwner
+
+  rails g migration change_fieldname_type_for_publishing_houses
+  rails g migration change_fieldname_type_for_royalty_owners
+
+  #-- Migrate output
+
+    invoke  active_record
+    create    db/migrate/20130427183427_change_fieldname_type_for_publishing_houses.rb
+
+    invoke  active_record
+    create    db/migrate/20130427183514_change_fieldname_type_for_royalty_owners.rb
+
+    dev01@dev01:~/dev/test2$ rake db:migrate
+    -- change_table(:publishing_houses)
+       -> 0.0019s
+    ==  ChangeFieldnameTypeForPublishingHouses: migrating =========================
+    ==  ChangeFieldnameTypeForPublishingHouses: migrated (0.0000s) ================
+    
+    -- change_table(:royalty_owners)
+       -> 0.0013s
+    ==  ChangeFieldnameTypeForRoyaltyOwners: migrating ============================
+    ==  ChangeFieldnameTypeForRoyaltyOwners: migrated (0.0000s) ===================
+
+Next: Issues with has_many, belongs to dirctions

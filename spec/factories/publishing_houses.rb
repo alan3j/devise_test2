@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :publishing_house do
-    type ""
+    abbreviation ""
     name "MyString"
     contact_name "MyString"
     phone "MyString"

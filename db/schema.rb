@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130427141227) do
+ActiveRecord::Schema.define(:version => 20130427183514) do
 
   create_table "artists", :force => true do |t|
     t.string   "name"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(:version => 20130427141227) do
   end
 
   create_table "publishing_houses", :force => true do |t|
-    t.string   "type"
+    t.string   "abbreviation"
     t.string   "name"
     t.string   "contact_name"
     t.string   "phone"
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(:version => 20130427141227) do
 
   create_table "royalty_owners", :force => true do |t|
     t.integer  "publishing_house_id"
-    t.string   "type"
+    t.string   "abbreviation"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "other_name"
