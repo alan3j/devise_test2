@@ -1,6 +1,6 @@
 class PublishingHouse < ActiveRecord::Base
 
-  belongs_to :royalty_owner
+  has_many :royalty_owners
 
   has_many :royaltyowner_product_maps, :through => :royalty_owners
 

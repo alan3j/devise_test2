@@ -695,4 +695,6 @@ Commit: Correct reserved field name, type; complete seeding
     ==  ChangeFieldnameTypeForRoyaltyOwners: migrating ============================
     ==  ChangeFieldnameTypeForRoyaltyOwners: migrated (0.0000s) ===================
 
-Next: Issues with has_many, belongs to dirctions
+Commit: Corrected has_many, belongs_to to modeling
+
+Next:

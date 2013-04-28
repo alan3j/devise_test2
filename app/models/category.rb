@@ -1,8 +1,8 @@
 class Category < ActiveRecord::Base
 
-  belongs_to :product
+  has_many :products
 
-  has_many :royaltyowner_product_map, :through => :products
+  has_many :royaltyowner_product_maps, :through => :products
 
   attr_accessible :name
 end
