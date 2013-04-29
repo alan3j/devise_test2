@@ -1,3 +1,29 @@
+
+- if user_signed_in?
+  %div{:id => "topupdated_royaltyowners"}
+    %h4 Top Royalty Owners
+    %table{:id => "topupdated_royaltyowners_table", :class => "general"}
+      %tr
+        %th Type
+        %th Last Name
+        %th Last Update
+      - @topupdated_royaltyowners.each do |t|
+        %tr
+          %td= t.abbreviation
+          %td= link_to t.last_name, t
+          %td= t.updated_at
+
+  %div{:id => "topupdated_products"}
+    %h4 Top Products
+    %table{:id => "topupdated_products_table", :class => "general"}
+      %tr
+        %th Title
+        %th Last Update
+      - @topupdated_products.each do |p|
+        %tr
+          %td= p.title
+          %td= p.updated_at
+
 %div{:class => "devinfo"}
   %h3 home#index
   %p (app/views/home/index.html.haml) 
@@ -6,10 +32,6 @@
   = #-- link_to "Users", users_path
   = #-- link_to "Customers", customers_path
   = #-- link_to "Orders", orders_path
-
-- if user_signed_in?
-  %h3 RoyaltyowerProductMap Test
-  = "Count: #{@ropm.count}"
 
 
 -#-- %h3 User List

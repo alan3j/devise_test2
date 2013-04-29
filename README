@@ -720,3 +720,9 @@ Commit: Changeups on Devise
                          PUT    /users/password(.:format)      devise/passwords#update
   edit_user_registration GET    /users/edit(.:format)          devise/registrations#edit
        user_registration PUT    /users(.:format)               devise/registrations#update
+
+Commit: Work on homepage controller/view
+
+  RoyaltyOwner.order("updated_at DESC").limit(5)
+  Product.order("updated_at DESC").limit(5)
+

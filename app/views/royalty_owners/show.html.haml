@@ -1,0 +1,42 @@
+%h4= "Royalty Owner ID: #{@royalty_owner.id}"
+%table{:class => "pvlist_2col"}
+  %tr
+    %th Property
+    %th Value
+  %tr
+    %td{:class => "property"} Publishing House
+    %td{:class => "value"}= "#{@royalty_owner.publishing_house.name if @royalty_owner.publishing_house}"
+  %tr
+    %td{:class => "property"} Type
+    %td{:class => "value"}= "#{@royalty_owner.abbreviation if @royalty_owner.abbreviation}"
+  %tr
+    %td{:class => "property"} First Name
+    %td{:class => "value"}= "#{@royalty_owner.first_name if @royalty_owner.first_name}"
+  %tr
+    %td{:class => "property"} Last Name
+    %td{:class => "value"}= "#{@royalty_owner.last_name if @royalty_owner.last_name}"
+  %tr
+    %td{:class => "property"} Other Name
+    %td{:class => "value"}= "#{@royalty_owner.other_name if @royalty_owner.other_name}"
+  %tr
+    %td{:class => "property"} Phone
+    %td{:class => "value"}= "#{@royalty_owner.phone if @royalty_owner.phone}"
+  %tr
+    %td{:class => "property"} Fax
+    %td{:class => "value"}= "#{@royalty_owner.fax if @royalty_owner.fax}"
+  %tr
+    %td{:class => "property"} Address
+    %td{:class => "value"}= "#{@royalty_owner.address if @royalty_owner.address}"
+  %tr
+    %td{:class => "property"} Address2
+    %td{:class => "value"}= "#{@royalty_owner.address2 if @royalty_owner.address2}"
+  %tr
+    %td{:class => "property"} City
+    %td{:class => "value"}= "#{@royalty_owner.city if @royalty_owner.city}"
+  %tr
+    %td{:class => "property"} State
+    %td{:class => "value"}= "#{@royalty_owner.state if @royalty_owner.state}"
+  %tr
+    %td{:class => "property"} Zip
+    %td{:class => "value"}= "#{@royalty_owner.zip if @royalty_owner.zip}"
+

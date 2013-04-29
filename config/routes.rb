@@ -18,6 +18,8 @@ Test2::Application.routes.draw do
     put 'users' => 'devise/registrations#update', :as => 'user_registration'
   end
 
+  resources :royalty_owners
+
 
   #-- resources :users
 

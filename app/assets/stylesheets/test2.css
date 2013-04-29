@@ -1,3 +1,33 @@
 .devinfo {
   visibility: hidden;
 }
+
+table.general {
+  border-collapse:collapse;
+}
+table.general th {
+  border:3px double black;
+}
+table.general td {
+  border:3px double black;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+table.pvlist_2col {
+  border-collapse:collapse;
+}
+table.pvlist_2col th {
+  border:3px double black;
+}
+table.pvlist_2col td.property {
+  border:3px double black;
+  text-align: right;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+table.pvlist_2col td.value {
+  border:3px double black;
+  padding-left: 12px;
+  padding-right: 6px;
+}
