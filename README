@@ -695,6 +695,28 @@ Commit: Correct reserved field name, type; complete seeding
     ==  ChangeFieldnameTypeForRoyaltyOwners: migrating ============================
     ==  ChangeFieldnameTypeForRoyaltyOwners: migrated (0.0000s) ===================
 
-Commit: Corrected has_many, belongs_to to modeling
+Commit: Corrected has_many and belongs_to modeling
 
-Next:
+Commit: Changeups on Devise
+
+  #-- Add user.  What about prod?
+  User.create :name => 'Diah Jantzen', :email => 'dejantzen@gmail.com', :password => 'password', :password_confirmation => 'password'
+
+  Looks like 'heroku run rails console' should work
+
+
+  #-- Remove sign_up from Devise Registerable module
+  http://stackoverflow.com/questions/6734323/how-do-i-remove-the-devise-route-to-sign-up
+  See ./config/routes.rb
+
+  dev01@dev01:~/dev/test2$ rake routes
+                    root        /                              home#index
+        new_user_session GET    /users/sign_in(.:format)       sessions#new
+            user_session POST   /users/sign_in(.:format)       sessions#create
+    destroy_user_session DELETE /users/sign_out(.:format)      sessions#destroy
+           user_password POST   /users/password(.:format)      devise/passwords#create
+       new_user_password GET    /users/password/new(.:format)  devise/passwords#new
+      edit_user_password GET    /users/password/edit(.:format) devise/passwords#edit
+                         PUT    /users/password(.:format)      devise/passwords#update
+  edit_user_registration GET    /users/edit(.:format)          devise/registrations#edit
+       user_registration PUT    /users(.:format)               devise/registrations#update

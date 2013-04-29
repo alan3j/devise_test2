@@ -10,7 +10,8 @@
   - if user_signed_in?
     %li
       = link_to 'Edit account (Devise)', edit_user_registration_path
-      = link_to 'Edit account (CRUD)', edit_user_path(session['warden.user.user.key'][1])
+      %div{:class => "devinfo"}
+        = #-- link_to 'Edit account (CRUD)', edit_user_path(session['warden.user.user.key'][1])
 -#  - else
 -#    %li
 -#      = link_to 'Sign up', new_user_registration_path

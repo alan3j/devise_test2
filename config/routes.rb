@@ -1,21 +1,30 @@
 Test2::Application.routes.draw do
 
-  get "users/index"
-  get "users/show"
+  #-- get "users/index"
+  #-- get "users/show"
 
   #-- get "home/index"
 
-  authenticated :user do
-    root :to => 'home#index'
-  end
-  root :to => "home#index"
-
+  #-- authenticated :user do
+  #--   root :to => 'home#index'
+  #-- end
+  root :to => 'home#index'
+  
   #-- devise_for :users
-  devise_for :users, :controllers => { :sessions => :sessions }
-  resources :users
+  devise_for :users, :controllers => { :sessions => :sessions },
+             :skip => [:registrations]
+  as :user do
+    get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
+    put 'users' => 'devise/registrations#update', :as => 'user_registration'
+  end
 
-  resources :customers
-  resources :orders
+
+  #-- resources :users
+
+  #-- resources :customers
+  #-- resources :orders
+
+
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
