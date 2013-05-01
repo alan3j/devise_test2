@@ -726,3 +726,30 @@ Commit: Work on homepage controller/view
   RoyaltyOwner.order("updated_at DESC").limit(5)
   Product.order("updated_at DESC").limit(5)
 
+Commit: Royalty Owner route and form work
+  
+  #-- Continue wiring remaining routes
+
+        royalty_owners GET    /royalty_owners(.:format)          royalty_owners#index
+                       POST   /royalty_owners(.:format)          royalty_owners#create
+     new_royalty_owner GET    /royalty_owners/new(.:format)      royalty_owners#new
+    edit_royalty_owner GET    /royalty_owners/:id/edit(.:format) royalty_owners#edit
+         royalty_owner GET    /royalty_owners/:id(.:format)      royalty_owners#show
+                       PUT    /royalty_owners/:id(.:format)      royalty_owners#update
+                       DELETE /royalty_owners/:id(.:format)      royalty_owners#destroy
+
+
+  #-- Add pagination
+  sudo gem install will_paginate
+  # add to Gemfile
+  bundle install
+
+  #-- Search forms
+  Good progress on Royalty Owner form
+
+Next: routes and forms
+  - work on scope next for relational sort / search crieteria
+  http://stackoverflow.com/questions/8471751/how-to-order-by-a-related-model-in-default-scope-rails-3-1
+  http://stackoverflow.com/questions/9197649/rails-sort-by-join-table-data
+
+  

@@ -1,0 +1,39 @@
+%h4 Royalty Owners
+
+= will_paginate @royalty_owners
+%br
+%table{:class => "general"}
+  %tr
+    %th= link_to "ID", royalty_owners_path(:sort_order => 'id')
+    %th= link_to "Publishing House (ID)", royalty_owners_path(:sort_order => 'publishing_house_id')
+    %th First Name
+    %th= link_to "Last Name", royalty_owners_path(:sort_order => 'last_name')
+    %th Other Name
+    %th Phone/Fax
+    %th Address
+  - @royalty_owners.each do |r|
+    %tr
+      %td= link_to r.id, r
+      %td= "#{r.publishing_house.name} (#{r.publishing_house.id})" if r.publishing_house
+      %td= r.first_name
+      %td= r.last_name
+      %td= r.other_name
+      %td
+        %pre= "p: #{r.phone}" if r.phone.length > 0
+        %pre= "\nf: #{r.fax}" if r.phone.length > 0 && r.fax.length > 0
+        %pre= "f: #{r.fax}" if r.phone.length == 0 && r.fax.length > 0
+      %td= "#{r.address}; #{r.address2}; #{r.city}; #{r.state}; #{r.zip}"
+%br
+= will_paginate @royalty_owners
+%br
+
+= form_tag('/royalty_owners', :method => "get") do
+  = label_tag(:search_field, 'Search options:')
+  = select_tag(:search_field, options_for_select(@search_fields))
+  = text_field_tag(:search_term, value = session[:search_term])
+  = submit_tag('Search')
+
+= form_tag('/royalty_owners', :method => "get") do
+  = label_tag(:records_pp, 'Records per page:')
+  = text_field_tag(:records_pp, value = session[:records_pp], options = {:size => '1'})
+  = submit_tag('Update')
