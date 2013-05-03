@@ -4,11 +4,11 @@
 %br
 %table{:class => "general"}
   %tr
-    %th= link_to "ID", royalty_owners_path(:sort_order => 'id')
-    %th= link_to "Publishing House (ID)", royalty_owners_path(:sort_order => 'publishing_house_id')
-    %th First Name
-    %th= link_to "Last Name", royalty_owners_path(:sort_order => 'last_name')
-    %th Other Name
+    %th= sort_link "ID", :id
+    %th= "Publishing House (ID)"
+    %th= sort_link "First Name", :first_name
+    %th= sort_link "Last Name", :last_name
+    %th= sort_link "Other Name", :other_name
     %th Phone/Fax
     %th Address
   - @royalty_owners.each do |r|

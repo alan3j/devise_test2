@@ -1,3 +1,6 @@
+span.hidden {
+  visibility: hidden;
+}
 .devinfo {
   visibility: hidden;
 }
@@ -31,3 +34,5 @@ table.pvlist_2col td.value {
   padding-left: 12px;
   padding-right: 6px;
 }
+
+

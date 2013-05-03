@@ -4,7 +4,7 @@ class RoyaltyOwnersController < ApplicationController
   require 'test2_helpers.rb'
 
   def index
-#debugger
+
     @search_fields = RoyaltyOwner.search_fields
 
     index_set_session
@@ -12,6 +12,8 @@ class RoyaltyOwnersController < ApplicationController
     @royalty_owners = RoyaltyOwner.search(session[:search_field], 
       session[:search_term], session[:records_pp], params[:page], 
       session[:sort_order])
+
+# @applications = Application.find(:all, :order => sort_order('created_at'))
 
   end
 
@@ -49,11 +51,10 @@ class RoyaltyOwnersController < ApplicationController
     end
 
     #-- Sort order
-    if params[:sort_order]
-      session[:sort_order] = params[:sort_order]
-    else
-      session[:sort_order] ||= 'id'
+    if !params[:sort_order].nil?
+      session[:sort_order] = sort_order 'id'
     end
+
   end
 
 end
