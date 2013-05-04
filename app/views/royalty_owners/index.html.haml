@@ -1,32 +1,7 @@
 %h4 Royalty Owners
 
-= will_paginate @royalty_owners
+-# Search and Records per page forms
 %br
-%table{:class => "general"}
-  %tr
-    %th= sort_link "ID", :id
-    %th= "Publishing House (ID)"
-    %th= sort_link "First Name", :first_name
-    %th= sort_link "Last Name", :last_name
-    %th= sort_link "Other Name", :other_name
-    %th Phone/Fax
-    %th Address
-  - @royalty_owners.each do |r|
-    %tr
-      %td= link_to r.id, r
-      %td= "#{r.publishing_house.name} (#{r.publishing_house.id})" if r.publishing_house
-      %td= r.first_name
-      %td= r.last_name
-      %td= r.other_name
-      %td
-        %pre= "p: #{r.phone}" if r.phone.length > 0
-        %pre= "\nf: #{r.fax}" if r.phone.length > 0 && r.fax.length > 0
-        %pre= "f: #{r.fax}" if r.phone.length == 0 && r.fax.length > 0
-      %td= "#{r.address}; #{r.address2}; #{r.city}; #{r.state}; #{r.zip}"
-%br
-= will_paginate @royalty_owners
-%br
-
 = form_tag('/royalty_owners', :method => "get") do
   = label_tag(:search_field, 'Search options:')
   = select_tag(:search_field, options_for_select(@search_fields))
@@ -37,3 +12,36 @@
   = label_tag(:records_pp, 'Records per page:')
   = text_field_tag(:records_pp, value = session[:records_pp], options = {:size => '1'})
   = submit_tag('Update')
+%br
+
+-# Pagination control
+= will_paginate @royalty_owners
+%br
+
+%table{:class => "general"}
+  %tr
+    %th= sort_link "ID", :id
+    %th= sort_link "Publishing House (ID)", 'publishing_houses.name', {}, :publishing_house
+    %th= sort_link "Type", :abbreviation
+    %th= sort_link "First Name", :first_name
+    %th= sort_link "Last Name", :last_name
+    %th= sort_link "Other Name", :other_name
+    %th Phone/Fax
+    %th Address
+  - @royalty_owners.each do |r|
+    %tr
+      %td= link_to r.id, r
+      %td= "#{r.publishing_house.name} (#{r.publishing_house.id})" if r.publishing_house
+      %td= r.abbreviation
+      %td= r.first_name
+      %td= r.last_name
+      %td= r.other_name
+      %td
+        %pre= "p: #{r.phone}" if r.phone.length > 0
+        %pre= "\nf: #{r.fax}" if r.phone.length > 0 && r.fax.length > 0
+        %pre= "f: #{r.fax}" if r.phone.length == 0 && r.fax.length > 0
+      %td= "#{r.address}; #{r.address2}; #{r.city}; #{r.state}; #{r.zip}"
+%br
+
+-# Pagination control
+= will_paginate @royalty_owners

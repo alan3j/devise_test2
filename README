@@ -749,10 +749,11 @@ Commit: Royalty Owner route and form work
 
 Commit: Decent sort, search, per page options in for Royalty Owners
 
-Next: routes and forms
-  - work on scope next for relational sort / search crieteria
+Commit: Relational sort working; RoyaltyOwner belongs to PublishingHouse
+  - work on relational sort / search crieteria
+  http://www.garbageburrito.com/blog/entry/447/rails-super-cool-simple-column-sorting
+
   http://stackoverflow.com/questions/8471751/how-to-order-by-a-related-model-in-default-scope-rails-3-1
   http://stackoverflow.com/questions/9197649/rails-sort-by-join-table-data
 
-  http://www.garbageburrito.com/blog/entry/447/rails-super-cool-simple-column-sorting
-  
+Next: routes and forms
