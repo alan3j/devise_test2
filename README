@@ -765,3 +765,18 @@ Commit: Completed routes for royalty_owners
          royalty_owner GET    /royalty_owners/:id(.:format)      royalty_owners#show
                        PUT    /royalty_owners/:id(.:format)      royalty_owners#update
                        DELETE /royalty_owners/:id(.:format)      royalty_owners#destroy
+
+Next: Heroku
+
+  git push heroku master
+  heroku ps
+  heroku logs
+  heroku rake db:migrate
+    WARNING: `heroku rake` has been deprecated. Please use `heroku run rake` instead.
+  heroku run rake db:reset
+  (not used) heroku rake db:seed
+  (not used) heroku run rake db:push
+
+  heroku pg:info
+  heroku pg:psql
+  heroku run rails console
