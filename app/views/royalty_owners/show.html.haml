@@ -1,4 +1,10 @@
 %h4= "Royalty Owner ID: #{@royalty_owner.id}"
+%br
+
+=# link_to "Edit Royalty Owner", edit_royalty_owner_path
+= button_to 'Edit', edit_royalty_owner_path(@royalty_owner), :method => :get
+= button_to 'Delete', royalty_owner_path(@royalty_owner), :method => :delete, :confirm => 'Are you sure?'
+
 %table{:class => "pvlist_2col"}
   %tr
     %th Property
@@ -22,7 +28,7 @@
     %td{:class => "property"} Phone
     %td{:class => "value"}= "#{@royalty_owner.phone if @royalty_owner.phone}"
   %tr
-    %td{:class => "property"} Fax
+    %td{:class => "property"} Fax    
     %td{:class => "value"}= "#{@royalty_owner.fax if @royalty_owner.fax}"
   %tr
     %td{:class => "property"} Address

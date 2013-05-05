@@ -756,4 +756,12 @@ Commit: Relational sort working; RoyaltyOwner belongs to PublishingHouse
   http://stackoverflow.com/questions/8471751/how-to-order-by-a-related-model-in-default-scope-rails-3-1
   http://stackoverflow.com/questions/9197649/rails-sort-by-join-table-data
 
-Next: routes and forms
+Commit: Completed routes for royalty_owners
+
+        royalty_owners GET    /royalty_owners(.:format)          royalty_owners#index
+                       POST   /royalty_owners(.:format)          royalty_owners#create
+     new_royalty_owner GET    /royalty_owners/new(.:format)      royalty_owners#new
+    edit_royalty_owner GET    /royalty_owners/:id/edit(.:format) royalty_owners#edit
+         royalty_owner GET    /royalty_owners/:id(.:format)      royalty_owners#show
+                       PUT    /royalty_owners/:id(.:format)      royalty_owners#update
+                       DELETE /royalty_owners/:id(.:format)      royalty_owners#destroy

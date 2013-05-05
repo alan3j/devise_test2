@@ -17,6 +17,11 @@ class RoyaltyOwner < ActiveRecord::Base
   #-- Loads @royalty_owners in royalty_owners_controller.rb
   def self.search(search_field, search_term, per_page, page, order, associate)
 
+    #-- Manage ambiguous column references
+    order = order.gsub(/^abbreviation/,'royalty_owners.abbreviation') if 
+      !order.nil? && order.index(/^abbreviation/)
+    search_field = 'royalty_owners.abbreviation' if search_field == 'abbreviation'
+
     if search_field.nil? or search_field == '' or search_term.nil?
       paginate :per_page => per_page, :page => page,
                :order => order,

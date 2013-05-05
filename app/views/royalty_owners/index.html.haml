@@ -1,7 +1,8 @@
 %h4 Royalty Owners
+= link_to "Add new Royalty Owner", new_royalty_owner_path
+%br
 
 -# Search and Records per page forms
-%br
 = form_tag('/royalty_owners', :method => "get") do
   = label_tag(:search_field, 'Search options:')
   = select_tag(:search_field, options_for_select(@search_fields))

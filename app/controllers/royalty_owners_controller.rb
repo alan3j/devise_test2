@@ -20,6 +20,47 @@ class RoyaltyOwnersController < ApplicationController
     @royalty_owner = RoyaltyOwner.find params[:id]
   end
 
+  def new
+  ###############################################
+    @publishing_house_list = []
+    PublishingHouse.select('id, name').order('name ASC').each do |r|
+      @publishing_house_list += Array({r.name => r.id})
+    end
+
+  end
+
+  def create
+  ###############################################  
+    @royalty_owner = RoyaltyOwner.create!(params[:royalty_owner])
+    flash[:notice] = "#{@royalty_owner.last_name} was successfully created"
+    redirect_to royalty_owners_path
+  end
+
+  def edit
+  ###############################################  
+    @publishing_house_list = []
+    PublishingHouse.select('id, name').order('name ASC').each do |r|
+      @publishing_house_list += Array({r.name => r.id})
+    end
+    @royalty_owner = RoyaltyOwner.find(params[:id])
+  end
+
+  def update
+  ###############################################  
+    @royalty_owner = RoyaltyOwner.find params[:id]
+    @royalty_owner.update_attributes!(params[:royalty_owner])
+    flash[:notice] = "#{@royalty_owner.last_name} was successfully updated"
+    redirect_to royalty_owner_path(@royalty_owner)
+  end
+
+  def destroy
+  ###############################################  
+    @royalty_owner = RoyaltyOwner.find params[:id]
+    @royalty_owner.destroy
+    flash[:notice] = "Royalty Owner '#{@royalty_owner.last_name}' deleted"
+    redirect_to royalty_owners_path
+  end
+
   #-- Maintain session variables
   def index_set_session
   ###############################################
@@ -57,6 +98,8 @@ class RoyaltyOwnersController < ApplicationController
     if !params[:sort_assoc].nil?
       session[:sort_assoc] = params[:sort_assoc]
     end
+    session[:sort_assoc] = nil if !params[:sort_order].nil? && 
+      params[:sort_order].index(/^publishing_house/) != 0
 
   end
 end
@@ -92,6 +135,8 @@ end
   #-- Note that default is required but not used when params[:sort_order] is filled
   def sort_order(default)
   ###############################################
+    #params[:sort_order] == 'abbreviation' ? col = "royalty_owners.#{params[:sort_order]}" :
+    #  col = params[:sort_order]
     "#{(params[:sort_order] || default.to_s).gsub(/[\s;'\"]/,'')} #{params[:sort_dir] == 'down' ? 'DESC' : 'ASC'}"
   end
 

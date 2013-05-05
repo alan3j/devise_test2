@@ -1,0 +1,53 @@
+%h4= "Edit Royalty Owner ID: #{@royalty_owner.id}"
+%br
+=# form_tag royalty_owners_path(@royalty_owner, :method => "put") do
+= form_for(@royalty_owner, :method => "put") do
+  = label :royalty_owner, :publishing_house_id, "Publishing House"
+  = select :royalty_owner, :publishing_house_id, @publishing_house_list
+  %br
+
+  = label :royalty_owner, :abbreviation, "Type"
+  = text_field :royalty_owner, :abbreviation
+  %br
+
+  = label :royalty_owner, :first_name, "First Name"
+  = text_field :royalty_owner, :first_name
+  %br
+
+  = label :royalty_owner, :last_name, "Last Name"
+  = text_field :royalty_owner, :last_name
+  %br
+
+  = label :royalty_owner, :other_name, "Other Name"
+  = text_field :royalty_owner, :other_name
+  %br
+
+  = label :royalty_owner, :phone, "phone"
+  = text_field :royalty_owner, :phone
+  %br
+
+  = label :royalty_owner, :fax, "fax"
+  = text_field :royalty_owner, :fax
+  %br
+
+  = label :royalty_owner, :address, "Address"
+  = text_field :royalty_owner, :address
+  %br
+
+  = label :royalty_owner, :address2, "Address 2"
+  = text_field :royalty_owner, :address2
+  %br
+
+  = label :royalty_owner, :city, "City"
+  = text_field :royalty_owner, :city
+  %br
+
+  = label :royalty_owner, :state, "State"
+  = text_field :royalty_owner, :state
+  %br
+
+  = label :royalty_owner, :zip, "Zip"
+  = text_field :royalty_owner, :zip
+  %br
+
+  = submit_tag 'Save Changes'
