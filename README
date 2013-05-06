@@ -805,3 +805,22 @@ edit_royaltyowner_product_map GET    /royaltyowner_product_maps/:id/edit(.:forma
 
     Fix select_tag :selected for Search options
 
+Commit: Fix RoyaltyownerProdcutMap controller (used generator this time)
+
+  dev01@dev01:~/dev/test2/app/controllers$ rails g controller RoyaltyownerProductMap
+    /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/http/mime_type.rb:102: warning: already initialized constant PDF
+      create  app/controllers/royaltyowner_product_map_controller.rb
+      invoke  erb
+      create    app/views/royaltyowner_product_map
+      invoke  rspec
+      create    spec/controllers/royaltyowner_product_map_controller_spec.rb
+      invoke  assets
+      invoke    coffee
+      invoke    scss
+
+  Several renames still had to happen:
+    mv app/controllers/royaltyowner_product_map_controller.rb app/controllers/royaltyowner_product_maps_controller.rb
+      Pluralized the class name 
+        class RoyaltyownerProductMapsController < ApplicationController
+    mv app/views/royaltyowner_product_map app/views/royaltyowner_product_maps
+
