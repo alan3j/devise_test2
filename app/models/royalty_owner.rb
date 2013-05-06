@@ -21,6 +21,18 @@ class RoyaltyOwner < ActiveRecord::Base
     order = order.gsub(/^abbreviation/,'royalty_owners.abbreviation') if 
       !order.nil? && order.index(/^abbreviation/)
     search_field = 'royalty_owners.abbreviation' if search_field == 'abbreviation'
+    #-- Manage ambiguous column references
+    order = order.gsub(/^city/,'royalty_owners.city') if 
+      !order.nil? && order.index(/^city/)
+    search_field = 'royalty_owners.city' if search_field == 'city'
+    #-- Manage ambiguous column references
+    order = order.gsub(/^state/,'royalty_owners.state') if 
+      !order.nil? && order.index(/^state/)
+    search_field = 'royalty_owners.state' if search_field == 'state'
+    #-- Manage ambiguous column references
+    order = order.gsub(/^zip/,'royalty_owners.zip') if 
+      !order.nil? && order.index(/^zip/)
+    search_field = 'royalty_owners.zip' if search_field == 'zip'
 
     if search_field.nil? or search_field == '' or search_term.nil?
       paginate :per_page => per_page, :page => page,

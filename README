@@ -766,8 +766,9 @@ Commit: Completed routes for royalty_owners
                        PUT    /royalty_owners/:id(.:format)      royalty_owners#update
                        DELETE /royalty_owners/:id(.:format)      royalty_owners#destroy
 
-Next: Heroku
+Commit: Heroku
 
+  rake assets:precompile
   git push heroku master
   heroku ps
   heroku logs
@@ -780,3 +781,27 @@ Next: Heroku
   heroku pg:info
   heroku pg:psql
   heroku run rails console
+
+
+  #-- Add user
+  heroku run rails console
+
+  User.create :name => 'Diah Jantzen', :email => 'dejantzen@gmail.com', :password => 'password', :password_confirmation => 'password'
+
+Commit: RoyaltyownerProductMap in progress; 2 fixes
+
+    royaltyowner_product_maps GET    /royaltyowner_product_maps(.:format)          royaltyowner_product_maps#index
+                              POST   /royaltyowner_product_maps(.:format)          royaltyowner_product_maps#create
+ new_royaltyowner_product_map GET    /royaltyowner_product_maps/new(.:format)      royaltyowner_product_maps#new
+edit_royaltyowner_product_map GET    /royaltyowner_product_maps/:id/edit(.:format) royaltyowner_product_maps#edit
+     royaltyowner_product_map GET    /royaltyowner_product_maps/:id(.:format)      royaltyowner_product_maps#show
+                              PUT    /royaltyowner_product_maps/:id(.:format)      royaltyowner_product_maps#update
+                              DELETE /royaltyowner_product_maps/:id(.:format)      royaltyowner_product_maps#destroy
+
+
+
+  Fixes: 
+    Ambiguous column reference fixes
+
+    Fix select_tag :selected for Search options
+

@@ -19,6 +19,7 @@ Test2::Application.routes.draw do
   end
 
   resources :royalty_owners
+  resources :royaltyowner_product_maps
 
 
   #-- resources :users

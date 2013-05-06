@@ -5,7 +5,7 @@
 -# Search and Records per page forms
 = form_tag('/royalty_owners', :method => "get") do
   = label_tag(:search_field, 'Search options:')
-  = select_tag(:search_field, options_for_select(@search_fields))
+  = select_tag(:search_field, options_for_select(@search_fields, :selected => session[:search_field]))
   = text_field_tag(:search_term, value = session[:search_term])
   = submit_tag('Search')
 
